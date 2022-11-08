@@ -1,0 +1,47 @@
+from ibm_quantum_widgets import CircuitComposer
+from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit
+from numpy import pi
+from math import sqrt
+# Create the X-measurement function:
+def x_measurement(qc, qubit, cbit):
+    """Measure 'qubit' in the X-basis, and store the result in 'cbit'"""
+    qc.h(qubit)
+    qc.measure(qubit, cbit)
+    return qc
+
+initial_state = [1/sqrt(2), -1/sqrt(2)]
+# Initialize our qubit and measure it
+qc = QuantumCircuit(1,1)
+qc.initialize(initial_state, 0)
+x_measurement(qc, 0, 0)  # measure qubit 0 to classical bit 0
+qc.draw()
+
+
+import qiskit
+import math
+from qiskit import *
+import numpy as np
+from numpy import linalg as la
+from qiskit.tools.monitor import job_monitor
+from numpy import sqrt, pi
+import qiskit.tools.jupyter
+from qiskit.quantum_info import Statevector
+from qiskit.visualization import plot_state_qsphere
+from qiskit.visualization import plot_bloch_multivector
+
+sv = Statevector.from_label('0')
+plot_state_qsphere(sv.data)
+mycircuit = QuantumCircuit(1)
+#mycircuit.ry(pi/4,0)
+#mycircuit.
+mycircuit.rz(15*pi/8,0)
+mycircuit.rz(15*pi/8,0)
+mycircuit.ry((math.acos((1/3)**0.5)),0) 
+mycircuit.rz(pi/4,0)
+
+mycircuit.draw('mpl')
+
+
+new_sv = sv.evolve(mycircuit)
+print(new_sv)
+plot_state_qsphere(new_sv.data)
