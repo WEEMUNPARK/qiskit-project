@@ -1,0 +1,29 @@
+import scipy.stats as st
+import pandas as pd
+import numpy
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+y = t_0 
+x = numpy.linspace(0,1,500) 
+x1 = numpy.linspace(0,1,500) 
+y1= t_1
+
+regr = linear_model.LinearRegression()
+regr1= linear_model.LinearRegression()
+
+regr.fit(x.reshape(-1, 1), y) 
+regr1.fit(x1.reshape(-1, 1), y1) 
+
+
+coef = regr.coef_ 
+coef1= regr1.coef_
+print(regr.coef_,regr1.coef_) 
+
+plt.scatter(x, y, color='blue')
+plt.scatter(x1,y1,color='red')
+
+plt.plot(x, regr.predict(x.reshape(-1,1)), color='white', linewidth=4)
+plt.plot(x1, regr1.predict(x1.reshape(-1,1)), color='white', linewidth=4)
+
+plt.show()
